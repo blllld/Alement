@@ -1,0 +1,139 @@
+@import '../../style/variables.scss';
+
+$media-boundary-name:'xs',
+'sm',
+'md',
+'lg',
+'xl',
+'xxl';
+$media-boundary : '(max-width:576px)',
+'(min-width:575px)',
+'(min-width:576px)',
+'(min-width:768px)',
+'(min-width:992px)',
+'(min-width:1200px)',
+'(min-width:1600px)';
+
+@function colSize ($media-name) {
+  $col-size: ();
+  $col: "";
+
+  @if $media-name !="" {
+    $col: #{'-'+$media-name};
+  }
+
+  @for $i from 0 to 25 {
+    $col-size: join($col-size, ".#{$prefix-cls}-col#{$col}-#{$i},");
+  }
+
+  @return $col-size;
+}
+
+@mixin withoutMediaQuery() {
+  #{colSize("")} {
+    flex: 0 0 auto;
+    float: left;
+  }
+
+  @for $i from 1 to 25 {
+    .al-col.#{$prefix-cls}-col-#{$i} {
+      width: #{(100 / 24 * $i ) + '%'};
+    }
+
+    .al-col.#{$prefix-cls}-col-order-#{$i} {
+      order: $i;
+    }
+
+    .al-col.#{$prefix-cls}-col-offset-#{$i} {
+      margin-left:#{(100 / 24 * $i ) + '%'};
+    }
+
+    .al-col.#{$prefix-cls}-col-pull-#{$i} {
+      right:#{(100 / 24 * $i ) + '%'};
+    }
+
+    .al-col.#{$prefix-cls}-col-push-#{$i} {
+      left:#{(100 / 24 * $i ) + '%'};
+    }
+  }
+}
+
+@mixin mediaQueryNormal($media-name, $screen) {
+  @media #{$screen} {
+    #{colSize($media-name)} {
+      flex: 0 0 auto;
+      float: left;
+    }
+  }
+}
+
+@mixin mediaQuerySpan($media-name, $screen) {
+  @for $i from 0 to 25 {
+    @media #{$screen} {
+      .al-col.#{$prefix-cls}-col-#{$media-name}-#{$i} {
+        width: #{(100 / 24 * $i ) + '%'};
+      }
+    }
+  }
+}
+
+@mixin mediaQueryOrder($media-name, $screen) {
+  @for $i from 0 to 25 {
+    @media #{$screen} {
+      .al-col.#{$prefix-cls}-col-#{$media-name}-order-#{$i} {
+        order: $i;
+      }
+    }
+
+
+  }
+}
+
+@mixin mediaQueryOffset($media-name, $screen) {
+  @for $i from 0 to 25 {
+    @media #{$screen} {
+      .al-col.#{$prefix-cls}-col-#{$media-name}-offset-#{$i} {
+        margin-left:#{(100 / 24 * $i ) + '%'};
+      }
+    }
+
+  }
+}
+
+@mixin mediaQueryPull($media-name, $screen) {
+  @for $i from 0 to 25 {
+    @media #{$screen} {
+      .al-col.#{$prefix-cls}-col-#{$media-name}-pull-#{$i} {
+        right:#{(100 / 24 * $i ) + '%'};
+      }
+    }
+
+  }
+}
+
+@mixin mediaQueryPush($media-name, $screen) {
+  @for $i from 0 to 25 {
+    @media #{$screen} {
+      .al-col.#{$prefix-cls}-col-#{$media-name}-push-#{$i} {
+        left:#{(100 / 24 * $i ) + '%'};
+      }
+    }
+
+  }
+}
+
+@include withoutMediaQuery();
+
+@each $media-name in $media-boundary-name {
+  $i: index($media-boundary-name, $media-name);
+  @include mediaQueryNormal($media-name, nth($media-boundary, $i));
+  @include mediaQuerySpan($media-name, nth($media-boundary, $i));
+  @include mediaQueryOrder($media-name, nth($media-boundary, $i));
+  @include mediaQueryOffset($media-name, nth($media-boundary, $i));
+  @include mediaQueryPull($media-name, nth($media-boundary, $i));
+  @include mediaQueryPush($media-name, nth($media-boundary, $i));
+}
+// 当col为0时表示不占格子，因此display为none不显示
+.al-col-0 {
+  display: none;
+}

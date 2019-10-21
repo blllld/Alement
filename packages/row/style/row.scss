@@ -1,0 +1,57 @@
+@import './mixin.scss';
+
+.al-row {
+  position: relative;
+  height: auto;
+  margin-right: 0;
+  margin-left: 0;
+  zoom: 1;
+  display: block;
+  box-sizing: border-box;
+}
+
+.al-row::before,
+.al-row::after {
+  display: table;
+  content: ' ';
+}
+
+.al-row-flex-start {
+  justify-content: flex-start;
+}
+
+.al-row-flex-center {
+  justify-content: center;
+}
+
+.al-row-flex-end {
+  justify-content: flex-end;
+}
+
+.al-row-flex-space-around {
+  justify-content: space-around;
+}
+
+.al-row-flex-space-between {
+  justify-content: space-between;
+}
+
+.al-row::after {
+  clear: both
+}
+
+.al-row-flex {
+  display: flex;
+}
+
+.al-row-flex-top {
+  align-items: top;
+}
+
+.al-row-flex-middle {
+  align-items: center;
+}
+
+.al-row-flex-bottom {
+  align-items: flex-end;
+}
