@@ -3,7 +3,9 @@ type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 type BoundaryMap = Partial<Record<Breakpoints, string>>;
 
-interface AlElement<T> extends React.HTMLAttributes<T> { }
+interface AlElement<T> extends React.HTMLAttributes<T> {
+  prefixCls?: string;
+}
 
 interface ConfigConsumerProps {
   getPrefixCls: (suffixCls: string, custoizePrefixCls?: string) => string;
@@ -11,7 +13,6 @@ interface ConfigConsumerProps {
 type gutter = number | Partial<Record<Breakpoints, number>> | [number, number];
 interface RowProps extends AlElement<HTMLDivElement> {
   gutter?: gutter
-  prefixCls?: string;
   type?: 'flex',
   justify?: string;
   align?: string;
@@ -49,5 +50,39 @@ interface ColProps extends AlElement<HTMLDivElement> {
   xl?: ColSpanType | ColSize;
   xxl?: ColSpanType | ColSize;
 
-  prefixCls?: string;
+}
+
+interface LayoutProps extends AlElement<HTMLDivElement> {
+
+}
+interface AsideProps extends AlElement<HTMLDivElement> {
+  /**
+   * 收缩宽度，默认80
+   */
+  collapsedWidth?: number;
+  /**
+   * 开启/关闭 收缩功能
+   */
+  collapsible?: boolean;
+  /**
+   * 当前收缩状态
+   */
+  collapsed?: boolean;
+
+  /**
+   * 展开宽度 默认200
+   */
+  width?: number;
+
+  trigger?: JSX.Element;
+
+  /**
+   * 当点击trigger时触发
+   */
+  onCollapse?: (collapsed) => void;
+}
+
+interface LayoutConsumerProps {
+  setAside: (asideName: string) => void;
+  removeAside: (asideName: string) => void;
 }

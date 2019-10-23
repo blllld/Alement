@@ -1,25 +1,51 @@
 import '../demo/style.scss';
 
-import { Row, Col, ConfigProvier } from '../packages'
-
+import { Layout } from '../packages'
+import { useState } from 'react';
+const { Aside, Content, Header, Footer } = Layout;
 export default () => {
+  const [collapsedWidth, setSize] = useState(80)
+  const [collapsed, setcollapsed] = useState(false);
   return (
-    <>
-      <Row type="flex" justify="end" align="bottom">
-        <Col span={4}>
-          <div className="red" style={{ height: 100 }}>col-4</div>
-        </Col>
-        <Col span={4}>
-          <div className="green" style={{ height: 50 }}>col-4</div>
-        </Col>
-        <Col span={4}>
-          <div className="blue" style={{ height: 80 }}>col-4</div>
-        </Col>
-        <Col span={4}>
-          <div className="yellow" style={{ height: 120 }}>col-4</div>
-        </Col>
-      </Row>
+    <Layout >
+      <Aside collapsible
+        collapsed={collapsed}
+        collapsedWidth={collapsedWidth}
+        onCollapse={collstate => setcollapsed(collstate)}
+      >
+        {
+          new Array(1000).fill("").map((val, i) => <div key={i}>Aside</div>)
+        }
+        <div>END</div>
 
-    </>
+      </Aside>
+      <Layout>
+        <Layout>
+
+          <Header>Header</Header>
+          <Content onClick={() => {
+            setcollapsed(!collapsed);
+          }}>
+            setcollapsed
+        </Content>
+          <Content onClick={() => {
+
+          }}>
+            collapsed
+         </Content>
+        </Layout>
+        <Aside collapsible
+          collapsed={collapsed}
+          collapsedWidth={collapsedWidth}
+          onCollapse={collstate => setcollapsed(collstate)}
+        >
+          {
+            new Array(1000).fill("").map((val, i) => <div key={i}>Aside</div>)
+          }
+          <div>END</div>
+
+        </Aside>
+      </Layout>
+    </Layout >
   )
 }
