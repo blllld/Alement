@@ -1,0 +1,61 @@
+@import '../../style/variables.scss';
+
+.#{$prefix-cls}-button {
+  display: inline-block;
+  margin: 4px;
+  padding: 0 15px;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #d9d9d9;
+  user-select: none;
+  line-height: 1.5;
+  height: 32px;
+  background-color: #ffffff;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  transition: all .3s cubic-bezier($btn-cubic-bezier);
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    outline: 0;
+
+  }
+
+  &:hover,
+  &:focus {
+    color: $primary-lighten-color;
+    border-color: $primary-lighten-color;
+  }
+
+  &:active {
+    color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  &:not([disabled]):active {
+    box-shadow: none;
+  }
+
+  &-primary {
+    background-color: $primary-color;
+    color: $color-white;
+    border-color: $primary-color;
+
+    &:hover,
+    &:focus {
+      color: $color-white;
+      border-color: $primary-lighten-color;
+      background-color: $primary-lighten-color;
+    }
+
+    &:active {
+      color: $color-white;
+      border-color: $primary-darken-color;
+      background-color: $primary-darken-color;
+    }
+  }
+}

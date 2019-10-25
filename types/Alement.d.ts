@@ -9,6 +9,7 @@ interface AlElement<T> extends React.HTMLAttributes<T> {
 
 interface ConfigConsumerProps {
   getPrefixCls: (suffixCls: string, custoizePrefixCls?: string) => string;
+  autoInsertSpaceInButton?: boolean;
 }
 type gutter = number | Partial<Record<Breakpoints, number>> | [number, number];
 interface RowProps extends AlElement<HTMLDivElement> {
@@ -85,4 +86,10 @@ interface AsideProps extends AlElement<HTMLDivElement> {
 interface LayoutConsumerProps {
   setAside: (asideName: string) => void;
   removeAside: (asideName: string) => void;
+}
+
+type buttonType = 'primary'
+
+interface ButtonProps extends AlElement<HTMLButtonElement> {
+  type?: buttonType;
 }
