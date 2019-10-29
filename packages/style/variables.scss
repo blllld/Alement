@@ -1,12 +1,11 @@
 @import './reset.scss';
 $prefix-cls:'al';
 
-$btn-cubic-bezier : .64,.04,.35,1 ;// https://cubic-bezier.com/#.64,.04,.35,1
+$btn-cubic-bezier : .64,
+.04,
+.35,
+1; // https://cubic-bezier.com/#.64,.04,.35,1
 
 $primary-color:#096dd9;
-
-$primary-lighten-color:lighten($primary-color,10%);
-
-$primary-darken-color:darken($primary-color,10%);
-
+$danger-color:#ff4d4f;
 $color-white:#ffffff;

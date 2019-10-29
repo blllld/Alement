@@ -1,0 +1,31 @@
+[al-click-animation-without-extra-node='true']::after {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  transition: all .2s linear;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: wave .4s cubic-bezier(0.075, 0.82, 0.165, 1), wave2 .4s linear;
+  animation-fill-mode: forwards;
+  opacity: .5;
+  border-radius: 1px;
+}
+
+@keyframes wave {
+  from {
+    box-shadow: 0 0 0 0 var(--current-color);
+  }
+
+  to {
+    box-shadow: 0 0 0 5px var(--current-color)
+  }
+}
+
+@keyframes wave2 {
+
+  to {
+    opacity: 0;
+  }
+}

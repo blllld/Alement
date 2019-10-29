@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import classNames from 'classnames';
 import { useContext } from "react"
+import Wave from '../wave'
 import { ConfigContext } from '../config-provider/context';
 
 
@@ -18,19 +19,22 @@ const renderCol = ({ getPrefixCls, autoInsertSpaceInButton }: ConfigConsumerProp
     type,
     ...others } = props;
   const prefixCls = getPrefixCls('button', customizePrefixCls);
+  const autoInsertSpace = autoInsertSpaceInButton !== false;
 
   const classes = classNames(
     prefixCls,
     className,
     {
-      [`${prefixCls}-${type}`]: type
+      [`${prefixCls}-${type}`]: type,
+      // [`${prefixCls}-auto-insert-space`]: autoInsertSpace && typeof children === 'string' && children.length == 2
     }
   );
-
   return (
-    <button {...others} className={classes} style={style}>
-      <span>{children}</span>
-    </button>
+    <Wave>
+      <button  {...others} className={classes} style={style}>
+        <span>{children}</span>
+      </button>
+    </Wave>
   )
 }
 

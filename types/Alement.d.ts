@@ -88,8 +88,8 @@ interface LayoutConsumerProps {
   removeAside: (asideName: string) => void;
 }
 
-type buttonType = 'primary'
+type buttonType = 'primary' | 'danger'
 
-interface ButtonProps extends AlElement<HTMLButtonElement> {
+interface ButtonProps extends AlElement<HTMLButtonElement>, React.ButtonHTMLAttributes<HTMLButtonElement> {
   type?: buttonType;
 }
