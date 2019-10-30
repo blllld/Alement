@@ -1,0 +1,32 @@
+@mixin btn-color($name, $color, $backColor) {
+  &-#{$name} {
+    color: $color;
+    background-color: $backColor;
+    border-color: $backColor;
+
+    &:hover,
+    &:focus {
+      color: $color-white;
+      border-color: lighten($backColor, 10%);
+      background-color: lighten($backColor, 10%);
+    }
+
+    &:active {
+      color: $color-white;
+      border-color: darken($backColor, 10%);
+      background-color: darken($backColor, 10%);
+    }
+  }
+}
+
+@mixin btn-disabled($name, $color) {
+
+  &-#{$name}.disabled,
+  &-#{$name}:disabled {
+    color: rgba(0, 0, 0, 0.25);
+    background-color: lighten($color, 15%);
+    border-color: lighten($color, 15%);
+    text-shadow: none;
+    box-shadow: none;
+  }
+}

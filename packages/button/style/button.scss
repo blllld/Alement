@@ -1,10 +1,8 @@
 @import '../../style/variables.scss';
+@import './mixin.scss';
 
 $primary-lighten-color:lighten($primary-color, 10%);
 $primary-darken-color:darken($primary-color, 10%);
-
-$danger-lighten-color:lighten($danger-color, 10%);
-$danger-darken-color:darken($danger-color, 10%);
 
 .#{$prefix-cls}-button {
   display: inline-block;
@@ -24,7 +22,7 @@ $danger-darken-color:darken($danger-color, 10%);
   transition: all .3s cubic-bezier($btn-cubic-bezier);
 
 
-  &-auto-insert-space {
+  &-auto-insert-space>* {
     letter-spacing: .34em;
     margin-right: -.34em;
   }
@@ -51,43 +49,30 @@ $danger-darken-color:darken($danger-color, 10%);
     box-shadow: none;
   }
 
-  &-primary {
-    background-color: $primary-color;
-    color: $color-white;
-    border-color: $primary-color;
+  @include btn-color("primary", $color-white, $primary-color);
+  @include btn-color("danger", $color-white, $danger-color);
+  @include btn-color("warning", $color-white, $warning-color);
+  @include btn-color("success", $color-white, $success-color);
+
+  &-link {
+    color: $primary-color;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+   
 
     &:hover,
     &:focus {
-      color: $color-white;
-      border-color: $primary-lighten-color;
-      background-color: $primary-lighten-color;
+      color: lighten($color: $primary-color, $amount: 10%);
     }
 
     &:active {
-      color: $color-white;
-      border-color: $primary-darken-color;
-      background-color: $primary-darken-color;
+      color: darken($color: $primary-color, $amount: 10%);
     }
   }
 
-  &-danger {
-    background-color: $danger-color;
-    color: $color-white;
-    border-color: $danger-color;
 
-    &:hover,
-    &:focus {
-      color: $color-white;
-      border-color: $danger-lighten-color;
-      background-color: $danger-lighten-color;
-    }
-
-    &:active {
-      color: $color-white;
-      border-color: $danger-darken-color;
-      background-color: $danger-darken-color;
-    }
-  }
 
   &.disabled,
   &:disabled {
@@ -95,15 +80,22 @@ $danger-darken-color:darken($danger-color, 10%);
   }
 
   &.disabled,
-  &:disabled,
-  &-danger.disabled,
-  &-danger:disabled,
-  &-primary.disabled,
-  &-primary:disabled {
+  &:disabled {
     color: rgba(0, 0, 0, 0.25);
     background-color: #f5f5f5;
     border-color: #d9d9d9;
     text-shadow: none;
     box-shadow: none;
+  }
+
+  @include btn-disabled('primary', $primary-color);
+  @include btn-disabled('success', $success-color);
+  @include btn-disabled('danger', $danger-color);
+  @include btn-disabled('warning', $warning-color);
+
+  &-link.disabled,
+  &-link:disabled {
+    color: rgba(0, 0, 0, 0.25);
+    background: none;
   }
 }

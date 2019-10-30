@@ -6,11 +6,10 @@ import { ConfigContext } from '../config-provider/context';
 
 
 const insertSpaceInButton = (insert: boolean, children: ReactNode) => {
-
+  return insert && typeof children === 'string' && children.length == 2 && !/^[a-zA-Z0-9]+$/g.test(children)
 }
 
 const renderCol = ({ getPrefixCls, autoInsertSpaceInButton }: ConfigConsumerProps, props: ButtonProps) => {
-
   const {
     prefixCls: customizePrefixCls,
     children,
@@ -26,16 +25,19 @@ const renderCol = ({ getPrefixCls, autoInsertSpaceInButton }: ConfigConsumerProp
     className,
     {
       [`${prefixCls}-${type}`]: type,
-      // [`${prefixCls}-auto-insert-space`]: autoInsertSpace && typeof children === 'string' && children.length == 2
+      [`${prefixCls}-auto-insert-space`]: insertSpaceInButton(autoInsertSpace, children)
     }
   );
-  return (
-    <Wave>
-      <button  {...others} className={classes} style={style}>
-        <span>{children}</span>
-      </button>
-    </Wave>
-  )
+  const btn = (
+    <button  {...others} className={classes} style={style}>
+      <span>{children}</span>
+    </button>
+  );
+  if (type === 'link') {
+    return btn;
+  }
+
+  return <Wave>{btn}</Wave>
 }
 
 const Button = (props: ButtonProps) => {

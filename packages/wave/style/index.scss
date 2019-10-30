@@ -7,9 +7,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  animation: wave .4s cubic-bezier(0.075, 0.82, 0.165, 1), wave2 .4s linear;
+  animation: wave .4s cubic-bezier(0.075, 0.82, 0.165, 1), to-the-ending .4s linear;
   animation-fill-mode: forwards;
-  opacity: .5;
+  opacity: .3;
   border-radius: 1px;
 }
 
@@ -23,7 +23,7 @@
   }
 }
 
-@keyframes wave2 {
+@keyframes to-the-ending {
 
   to {
     opacity: 0;
