@@ -21,10 +21,29 @@ $primary-darken-color:darken($primary-color, 10%);
   font-size: 14px;
   transition: all .3s cubic-bezier($btn-cubic-bezier);
 
+  &-round {
+    border-radius: 36px;
+  }
+
+  &-cricle {
+    border-radius: 50%;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    min-width: 32px;
+  }
+
+  &-has-icon .#{$prefix-cls}-icon {
+    margin-left: .34em;
+  }
 
   &-auto-insert-space>* {
     letter-spacing: .34em;
     margin-right: -.34em;
+
+    .#{$prefix-cls}-icon {
+      margin-left: 0;
+    }
   }
 
   &:hover,
@@ -60,7 +79,7 @@ $primary-darken-color:darken($primary-color, 10%);
     border: none;
     cursor: pointer;
 
-   
+
 
     &:hover,
     &:focus {
@@ -97,5 +116,25 @@ $primary-darken-color:darken($primary-color, 10%);
   &-link:disabled {
     color: rgba(0, 0, 0, 0.25);
     background: none;
+  }
+
+  &-block {
+    width: 100%;
+  }
+
+  &-cool-loading>span {
+    transition: margin-right .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &-loading {
+    pointer-events: none;
+
+    &:not(.#{$prefix-cls}-button-has-icon) {
+      padding-right: 22px;
+
+      >span {
+        margin-right: -14px;
+      }
+    }
   }
 }

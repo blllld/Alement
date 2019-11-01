@@ -1,5 +1,5 @@
 import './style/index.scss'
-import React, { useRef, useEffect, useContext, useState } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { ConfigContext } from '../config-provider/context';
 let wavePesudoStyle: HTMLStyleElement;
 
@@ -33,7 +33,7 @@ const getWaveColor = (currentColor) => {
 const wavedByClickNode = (current: HTMLElement, cls) => {
   let currentStyle = getComputedStyle(current);
 
-  
+
   const getColor = () => {
     return currentStyle.getPropertyValue('border-top-color') ||
       currentStyle.getPropertyValue('border-color') ||

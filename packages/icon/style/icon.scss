@@ -1,0 +1,28 @@
+@import '../../style/variables.scss';
+
+.#{$prefix-cls}-icon {
+  height: 16px;
+  display: inline-block;
+  vertical-align: sub;
+
+  &-spin > svg {
+    animation: cricleRotate 1s linear infinite;
+  }
+
+  >svg {
+    height: inherit;
+    width: inherit;
+  }
+}
+
+@keyframes cricleRotate {
+
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}

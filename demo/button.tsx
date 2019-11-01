@@ -1,20 +1,29 @@
 import { Button } from '../packages'
+import { useState } from 'react'
 export default () => {
+  let [loading, setLoading] = useState(false)
   return (
-    <>
-      <Button type="primary" disabled>primary</Button>
-      <Button type="danger" disabled>danger</Button>
-      <Button type="warning" disabled>warning</Button>
-      <Button type="success" disabled>success</Button>
-      <Button type="link" disabled >success</Button>
-      <Button disabled>normal</Button>
-      <div></div>
-      <Button type="primary" >primary</Button>
-      <Button type="danger" >danger</Button>
-      <Button type="warning" >warning</Button>
-      <Button type="success" >success</Button>
-      <Button type="link"  >success</Button>
-      <Button >normal</Button>
-    </>
+    <div>
+      {/* <Button type="primary" icon="error" >错了</Button>
+      <Button type="primary" shape="round">没错</Button>
+      <Button type="primary" icon="speaker" shape="cricle"></Button>
+      <Button type="danger" icon="wifi" shape="cricle"></Button> */}
+      <Button type="danger"   loading={loading} onClick={() => {
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 2e3);
+      }}>内容</Button>
+      <Button type="danger" loading={loading} cooloading block onClick={() => {
+        setLoading(true);
+      }}>内容</Button>
+      <Button type="danger" loading={loading} cooloading onClick={() => {
+        setLoading(true);
+      }}>内容</Button>
+      <Button type="danger" shape="cricle" icon="wifi" onClick={() => {
+        setLoading(false);
+      }}></Button>
+
+    </div>
   )
 }

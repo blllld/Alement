@@ -17,6 +17,11 @@
       background-color: darken($backColor, 10%);
     }
   }
+
+  &-loading#{&-#{$name}} {
+    border-color: lighten($backColor, 20%);
+    background-color: lighten($backColor, 20%);
+  }
 }
 
 @mixin btn-disabled($name, $color) {

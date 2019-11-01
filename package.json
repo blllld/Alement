@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build-icon":"node ./scripts/build_icon",
     "dev": "next",
     "build": "next build",
     "start": "next start"

@@ -90,7 +90,19 @@ interface LayoutConsumerProps {
 }
 
 type buttonType = 'primary' | 'danger' | 'warning' | 'success' | 'link'
-
+type sizeType = 'large' | 'small'
+type shapeType = 'round' | 'cricle'
 interface ButtonProps extends AlElement<HTMLButtonElement>, React.ButtonHTMLAttributes<HTMLButtonElement> {
   type?: buttonType;
+  icon?: string;
+  shape?: shapeType;
+  size?: sizeType;
+  href?: string;
+  loading?: boolean;
+  cooloading?:boolean;
+  block?:boolean;
+}
+interface IconProps extends AlElement<HTMLElement> {
+  type?: string;
+  spin?: boolean;
 }

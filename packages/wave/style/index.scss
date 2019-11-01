@@ -1,16 +1,19 @@
 [al-click-animation-without-extra-node='true']::after {
   content: " ";
-  display: inline-block;
-  position: absolute;
-  transition: all .2s linear;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+
+  display: inline-block;
+  position: absolute;
+  transition: all .2s linear;
+  
+  opacity: .3;
+  border-radius: inherit;
+
   animation: wave .4s cubic-bezier(0.075, 0.82, 0.165, 1), to-the-ending .4s linear;
   animation-fill-mode: forwards;
-  opacity: .3;
-  border-radius: 1px;
 }
 
 @keyframes wave {
