@@ -7,7 +7,7 @@ export default () => {
     <>
       {/* <Layout></Layout> */}
       <Button></Button>
-      <Icon></Icon>
+      {/* <Icon></Icon> */}
     </>
   )
 }

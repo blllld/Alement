@@ -20,7 +20,7 @@ $primary-darken-color:darken($primary-color, 10%);
   color: rgba(0, 0, 0, 0.65);
   font-size: 14px;
   transition: all .3s cubic-bezier($btn-cubic-bezier);
-
+  text-decoration: none;
   &-round {
     border-radius: 36px;
   }
@@ -37,7 +37,7 @@ $primary-darken-color:darken($primary-color, 10%);
     margin-left: .34em;
   }
 
-  &-auto-insert-space>* {
+  &-auto-insert-space:not(&-link)>* {
     letter-spacing: .34em;
     margin-right: -.34em;
 
@@ -78,8 +78,7 @@ $primary-darken-color:darken($primary-color, 10%);
     background-color: transparent;
     border: none;
     cursor: pointer;
-
-
+    
 
     &:hover,
     &:focus {
@@ -88,6 +87,9 @@ $primary-darken-color:darken($primary-color, 10%);
 
     &:active {
       color: darken($color: $primary-color, $amount: 10%);
+    }
+    .#{$prefix-cls}-icon {
+      margin-left: 5px;
     }
   }
 
@@ -129,7 +131,7 @@ $primary-darken-color:darken($primary-color, 10%);
   &-loading {
     pointer-events: none;
 
-    &:not(.#{$prefix-cls}-button-has-icon) {
+    &:not(.#{$prefix-cls}-button-has-icon):not(.#{$prefix-cls}-button-link) {
       padding-right: 22px;
 
       >span {
