@@ -1,8 +1,11 @@
 import './style.scss';
-
+import Button from '../demo/button'
+import Icon from '../demo/icon'
 import { Layout } from '../packages'
 import { useState } from 'react';
+
 const { Aside, Content, Header, Footer } = Layout;
+
 export default () => {
   const [collapsedWidth, setSize] = useState(80)
   const [collapsed, setcollapsed] = useState(false);
@@ -22,7 +25,9 @@ export default () => {
       <Layout>
         <Layout>
 
-          <Header>Header</Header>
+          <Header>
+            <Icon></Icon>
+          </Header>
           <Content onClick={() => {
             setcollapsed(!collapsed);
           }}>
@@ -31,8 +36,8 @@ export default () => {
           <Content onClick={() => {
 
           }}>
-            collapsed
-         </Content>
+            <Button></Button>
+          </Content>
         </Layout>
         <Aside collapsible
           collapsed={collapsed}

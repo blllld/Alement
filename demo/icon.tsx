@@ -1,4 +1,4 @@
-import Icon from '../packages/icon/icon'
+import { Icon } from '../packages'
 
 
 export default () => {

@@ -17,7 +17,7 @@ export default () => {
 
       <Button type="link" loading={loading} href="http://www.baidu.com" onClick={() => {
         setLoading(true);
-      }}>内容</Button>
+      }}>http://www.baidu.com</Button>
       <Button type="danger" shape="cricle" icon="wifi" onClick={() => {
         setLoading(false);
       }}></Button>
